@@ -1,0 +1,562 @@
+.engineering-ring {
+  position: relative;
+  overflow: hidden;
+  padding: 80px;
+  background: #0c0e0f;
+  color: #f2f2ee;
+  border-top: 1px solid rgba(255, 255, 255, 0.08);
+  border-bottom: 1px solid rgba(255, 255, 255, 0.08);
+}
+
+.engineering-ring::before {
+  content: "";
+  position: absolute;
+  inset: 0;
+  pointer-events: none;
+
+  background-image:
+    linear-gradient(
+      rgba(255, 255, 255, 0.018) 1px,
+      transparent 1px
+    ),
+    linear-gradient(
+      90deg,
+      rgba(255, 255, 255, 0.018) 1px,
+      transparent 1px
+    );
+
+  background-size: 80px 80px;
+}
+
+.engineering-ring__meta,
+.engineering-ring__footer {
+  position: relative;
+  z-index: 2;
+
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+
+  color: #596064;
+  font-size: 8px;
+  letter-spacing: 0.17em;
+  text-transform: uppercase;
+}
+
+.engineering-ring__stage {
+  position: relative;
+  z-index: 2;
+
+  display: grid;
+  grid-template-columns: 420px minmax(0, 1fr);
+  align-items: center;
+  gap: clamp(70px, 9vw, 150px);
+
+  width: 100%;
+  max-width: 1220px;
+  margin: 80px auto;
+}
+
+.engineering-ring__visual {
+  position: relative;
+
+  width: 400px;
+  height: 400px;
+
+  margin: 0 auto;
+}
+
+.engineering-ring__orbit {
+  position: absolute;
+  inset: 0;
+
+  border: 1px solid rgba(255, 255, 255, 0.19);
+  border-radius: 50%;
+
+  animation: engineeringRotation 40s linear infinite;
+}
+
+.engineering-ring__orbit::before {
+  content: "";
+  position: absolute;
+  inset: 34px;
+
+  border: 1px solid rgba(255, 255, 255, 0.09);
+  border-radius: 50%;
+}
+
+.engineering-ring__orbit::after {
+  content: "";
+  position: absolute;
+  inset: 68px;
+
+  border: 1px dashed rgba(255, 255, 255, 0.1);
+  border-radius: 50%;
+}
+
+.engineering-ring__tick {
+  position: absolute;
+
+  top: -13px;
+  left: 50%;
+
+  width: 1px;
+  height: 8px;
+
+  background: rgba(255, 255, 255, 0.25);
+
+  transform-origin: 50% 213px;
+
+  transform:
+    translateX(-50%)
+    rotate(calc(var(--tick) * 10deg));
+}
+
+.engineering-ring__tick--major {
+  top: -16px;
+  height: 15px;
+  background: rgba(255, 255, 255, 0.55);
+}
+
+.engineering-ring__degree {
+  position: absolute;
+
+  color: #747b7e;
+  font-size: 7px;
+  letter-spacing: 0.12em;
+}
+
+.engineering-ring__degree--top {
+  top: 20px;
+  left: 50%;
+  transform: translateX(-50%);
+}
+
+.engineering-ring__degree--right {
+  top: 50%;
+  right: 18px;
+  transform: translateY(-50%) rotate(90deg);
+}
+
+.engineering-ring__degree--bottom {
+  bottom: 20px;
+  left: 50%;
+  transform: translateX(-50%) rotate(180deg);
+}
+
+.engineering-ring__degree--left {
+  top: 50%;
+  left: 18px;
+  transform: translateY(-50%) rotate(-90deg);
+}
+
+.engineering-ring__inner {
+  position: absolute;
+  inset: 88px;
+
+  display: flex;
+  align-items: center;
+  justify-content: center;
+
+  border: 1px solid rgba(255, 255, 255, 0.13);
+  border-radius: 50%;
+}
+
+.engineering-ring__cross {
+  position: absolute;
+  background: rgba(255, 255, 255, 0.1);
+}
+
+.engineering-ring__cross--horizontal {
+  left: -42px;
+  width: calc(100% + 84px);
+  height: 1px;
+}
+
+.engineering-ring__cross--vertical {
+  top: -42px;
+  width: 1px;
+  height: calc(100% + 84px);
+}
+
+.engineering-ring__core {
+  position: relative;
+  z-index: 3;
+
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+
+  width: 112px;
+  height: 112px;
+
+  background: #0c0e0f;
+
+  border: 1px solid rgba(255, 255, 255, 0.18);
+  border-radius: 50%;
+}
+
+.engineering-ring__core span {
+  margin-bottom: 7px;
+
+  color: #676e72;
+
+  font-size: 7px;
+  letter-spacing: 0.2em;
+}
+
+.engineering-ring__core strong {
+  color: #dfe1dd;
+
+  font-size: 25px;
+  font-weight: 400;
+  line-height: 1;
+  letter-spacing: 0.08em;
+}
+
+.engineering-ring__marker {
+  position: absolute;
+
+  color: #62696c;
+  font-size: 10px;
+  font-weight: 300;
+}
+
+.engineering-ring__marker--top {
+  top: -31px;
+  left: 50%;
+  transform: translateX(-50%);
+}
+
+.engineering-ring__marker--right {
+  top: 50%;
+  right: -31px;
+  transform: translateY(-50%);
+}
+
+.engineering-ring__marker--bottom {
+  bottom: -31px;
+  left: 50%;
+  transform: translateX(-50%);
+}
+
+.engineering-ring__marker--left {
+  top: 50%;
+  left: -31px;
+  transform: translateY(-50%);
+}
+
+.engineering-ring__copy {
+  width: 100%;
+  max-width: 570px;
+  min-width: 0;
+}
+
+.engineering-ring__label {
+  display: block;
+
+  margin-bottom: 25px;
+
+  color: #666d70;
+
+  font-size: 8px;
+  letter-spacing: 0.17em;
+  text-transform: uppercase;
+}
+
+.engineering-ring__copy h3 {
+  margin: 0;
+
+  color: #edede8;
+
+  font-size: clamp(54px, 5.5vw, 84px);
+  font-weight: 500;
+  line-height: 0.88;
+  letter-spacing: -0.06em;
+  text-transform: uppercase;
+}
+
+.engineering-ring__copy h3 span {
+  display: block;
+  color: #60666a;
+}
+
+.engineering-ring__copy p {
+  max-width: 480px;
+
+  margin: 36px 0 0;
+
+  color: #7f8588;
+
+  font-size: 12px;
+  line-height: 1.8;
+}
+
+.engineering-ring__specs {
+  display: grid;
+  grid-template-columns: repeat(3, minmax(0, 1fr));
+
+  gap: 18px;
+
+  margin-top: 48px;
+}
+
+.engineering-ring__specs div {
+  padding-top: 13px;
+  border-top: 1px solid rgba(255, 255, 255, 0.13);
+}
+
+.engineering-ring__specs span,
+.engineering-ring__specs strong {
+  display: block;
+}
+
+.engineering-ring__specs span {
+  margin-bottom: 8px;
+
+  color: #555d60;
+
+  font-size: 7px;
+  letter-spacing: 0.15em;
+  text-transform: uppercase;
+}
+
+.engineering-ring__specs strong {
+  color: #a9aeb0;
+
+  font-size: 10px;
+  font-weight: 500;
+  letter-spacing: 0.08em;
+}
+
+.engineering-ring__footer {
+  padding-top: 25px;
+  border-top: 1px solid rgba(255, 255, 255, 0.08);
+}
+
+@keyframes engineeringRotation {
+  from {
+    transform: rotate(0deg);
+  }
+
+  to {
+    transform: rotate(360deg);
+  }
+}
+
+@media (max-width: 1100px) {
+  .engineering-ring {
+    padding-left: 48px;
+    padding-right: 48px;
+  }
+
+  .engineering-ring__stage {
+    grid-template-columns: 350px minmax(0, 1fr);
+    gap: 60px;
+  }
+
+  .engineering-ring__visual {
+    width: 340px;
+    height: 340px;
+  }
+
+  .engineering-ring__tick {
+    top: -11px;
+    transform-origin: 50% 181px;
+  }
+
+  .engineering-ring__tick--major {
+    top: -14px;
+  }
+
+  .engineering-ring__orbit::before {
+    inset: 29px;
+  }
+
+  .engineering-ring__orbit::after {
+    inset: 58px;
+  }
+
+  .engineering-ring__inner {
+    inset: 75px;
+  }
+
+  .engineering-ring__copy h3 {
+    font-size: clamp(48px, 5.8vw, 70px);
+  }
+}
+
+@media (max-width: 900px) {
+  .engineering-ring {
+    padding: 75px 32px;
+  }
+
+  .engineering-ring__stage {
+    grid-template-columns: 1fr;
+    gap: 80px;
+
+    margin: 70px auto;
+  }
+
+  .engineering-ring__visual {
+    width: 400px;
+    height: 400px;
+  }
+
+  .engineering-ring__tick {
+    top: -13px;
+    transform-origin: 50% 213px;
+  }
+
+  .engineering-ring__tick--major {
+    top: -16px;
+  }
+
+  .engineering-ring__orbit::before {
+    inset: 34px;
+  }
+
+  .engineering-ring__orbit::after {
+    inset: 68px;
+  }
+
+  .engineering-ring__inner {
+    inset: 88px;
+  }
+
+  .engineering-ring__copy {
+    max-width: 650px;
+  }
+
+  .engineering-ring__copy h3 {
+    font-size: clamp(56px, 10vw, 82px);
+  }
+}
+
+@media (max-width: 600px) {
+  .engineering-ring {
+    padding: 60px 20px;
+  }
+
+  .engineering-ring__meta span:last-child,
+  .engineering-ring__footer span:last-child {
+    display: none;
+  }
+
+  .engineering-ring__stage {
+    gap: 65px;
+    margin: 55px auto;
+  }
+
+  .engineering-ring__visual {
+    width: 300px;
+    height: 300px;
+  }
+
+  .engineering-ring__tick {
+    top: -10px;
+    height: 6px;
+
+    transform-origin: 50% 160px;
+  }
+
+  .engineering-ring__tick--major {
+    top: -13px;
+    height: 12px;
+  }
+
+  .engineering-ring__orbit::before {
+    inset: 26px;
+  }
+
+  .engineering-ring__orbit::after {
+    inset: 51px;
+  }
+
+  .engineering-ring__inner {
+    inset: 66px;
+  }
+
+  .engineering-ring__cross--horizontal {
+    left: -32px;
+    width: calc(100% + 64px);
+  }
+
+  .engineering-ring__cross--vertical {
+    top: -32px;
+    height: calc(100% + 64px);
+  }
+
+  .engineering-ring__core {
+    width: 82px;
+    height: 82px;
+  }
+
+  .engineering-ring__core strong {
+    font-size: 20px;
+  }
+
+  .engineering-ring__marker--top {
+    top: -25px;
+  }
+
+  .engineering-ring__marker--right {
+    right: -25px;
+  }
+
+  .engineering-ring__marker--bottom {
+    bottom: -25px;
+  }
+
+  .engineering-ring__marker--left {
+    left: -25px;
+  }
+
+  .engineering-ring__copy h3 {
+    font-size: clamp(44px, 14vw, 64px);
+  }
+
+  .engineering-ring__copy p {
+    margin-top: 28px;
+    font-size: 12px;
+  }
+
+  .engineering-ring__specs {
+    gap: 10px;
+    margin-top: 38px;
+  }
+
+  .engineering-ring__specs strong {
+    font-size: 8px;
+  }
+}
+
+@media (max-width: 360px) {
+  .engineering-ring__visual {
+    width: 260px;
+    height: 260px;
+  }
+
+  .engineering-ring__tick {
+    transform-origin: 50% 140px;
+  }
+
+  .engineering-ring__orbit::before {
+    inset: 22px;
+  }
+
+  .engineering-ring__orbit::after {
+    inset: 44px;
+  }
+
+  .engineering-ring__inner {
+    inset: 57px;
+  }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .engineering-ring__orbit {
+    animation: none;
+  }
+}
